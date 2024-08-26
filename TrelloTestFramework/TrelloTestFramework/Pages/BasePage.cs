@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace TrelloTestFramework.TrelloTestFramework.Pages
 {
@@ -14,28 +15,9 @@ namespace TrelloTestFramework.TrelloTestFramework.Pages
         protected IWebElement WaitForElementToBeVisible(WebDriver driver, By Locator, int timeout = 10)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-
-            IWebElement element = wait.Until(driver => {
-                try
-                {
-                    if (driver.FindElement(Locator).Displayed)
-                    {
-                        return (IWebElement?)driver.FindElement(Locator);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    return null;
-                }
-            });
-
+            IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(Locator));
             return element;
         }
-
     }
 
 
