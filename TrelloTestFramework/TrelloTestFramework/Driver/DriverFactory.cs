@@ -36,7 +36,7 @@ namespace TrelloTestFramework.TrelloTestFramework.Driver
             return _driver;
         }
 
-        public void CloseDriver(WebDriver driver)
+        public void Dispose(WebDriver driver)
         {
             driver.Quit();
         }
