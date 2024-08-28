@@ -12,9 +12,9 @@ namespace TrelloTestFramework.TrelloTestFramework.Driver
 
     public class DriverFactory
     {
-        private WebDriver _driver;
+        private IWebDriver _driver;
         
-        public WebDriver InitDriver() 
+        public IWebDriver InitDriver() 
         {
             string browser = "chrome";
 
@@ -36,7 +36,7 @@ namespace TrelloTestFramework.TrelloTestFramework.Driver
             return _driver;
         }
 
-        public void Dispose(WebDriver driver)
+        public void Dispose(IWebDriver driver)
         {
             driver.Quit();
         }
