@@ -32,9 +32,10 @@ namespace TrelloTestFramework.TrelloTestFramework.Steps
         [When("I enter the username and password")]
         public void WhenIEnterTheUsernameAndPassword()
         {
-            _loginPage.EnterUsername(_testHooks.Driver, "testuser");
+            
+            _loginPage.EnterUsername(_testHooks.Driver, "ruliotrio@gmail.com");
             _loginPage.ClickLoginSubmitButton(_testHooks.Driver);
-            _loginPage.EnterPassword(_testHooks.Driver, "password");
+            _loginPage.EnterPassword(_testHooks.Driver, "139Test391!");
         }
 
 
@@ -48,6 +49,8 @@ namespace TrelloTestFramework.TrelloTestFramework.Steps
         [Then("I should be logged in")]
         public void ThenIShouldBeLoggedIn()
         {
+
+            
             Assert.True(_loginPage.IsLoggedIn(_testHooks.Driver));
         }
     

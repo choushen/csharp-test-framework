@@ -62,7 +62,8 @@ namespace TrelloTestFramework.TrelloTestFramework.Pages
         
         internal bool IsLoggedIn(IWebDriver driver)
         {
-            return driver.FindElement(DashboardBoardsList).Displayed;
+            IWebElement DashBoardList = WaitForElementToBeVisible(driver, DashboardBoardsList);
+            return DashBoardList.Displayed;
         }
 
     } // end
