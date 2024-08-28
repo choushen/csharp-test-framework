@@ -12,31 +12,36 @@ namespace TrelloTestFramework.TrelloTestFramework.Hooks
     public class TestHooks
     {
 
-        private DriverFactory _driverFactory = new DriverFactory();
-        ThreadLocal<WebDriver> _driver = new ThreadLocal<WebDriver>();
+        private static readonly DriverFactory _driverFactory = new DriverFactory();
+        private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
+
+        public IWebDriver Driver
+        {
+            get { return _driver.Value; }
+        }
 
         [BeforeTestRun]
-        public void BeforeTestRun()
+        public static void BeforeTestRun()
         {
             // Initialize WebDriver, etc...
             _driver.Value = _driverFactory.InitDriver();
         }
         
         [BeforeScenario]
-        public void BeforeScenario()
+        public static void BeforeScenario()
         {
             Console.WriteLine("BeforeScenario");
         }
 
         [AfterScenario]
-        public void AfterScenario()
+        public static void AfterScenario()
         {
             Console.WriteLine("AfterScenario");
         }
 
 
         [AfterTestRun]
-        public void AfterTestRun()
+        public static void AfterTestRun()
         {
             // Close WebDriver, close browser, etc...
             if(_driver.Value != null)
