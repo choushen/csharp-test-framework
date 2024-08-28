@@ -12,7 +12,7 @@ namespace TrelloTestFramework.TrelloTestFramework.Pages
     public class BasePage
     {
         
-        protected IWebElement WaitForElementToBeVisible(WebDriver driver, By Locator, int timeout = 10)
+        protected IWebElement WaitForElementToBeVisible(IWebDriver driver, By Locator, int timeout = 10)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(Locator));
