@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+TrelloTestFramework/TrelloTestFramework/Resources/TextFile.txt
+TrelloTestFramework/TrelloTestFramework/Resources/UserInfo.json
