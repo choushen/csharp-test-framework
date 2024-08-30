@@ -8,6 +8,9 @@
 # Ignore generated SpecFlow files
 *.feature.cs
 
+# ignore allure results
+allure-results/
+
 # User-specific files
 *.rsuser
 *.suo

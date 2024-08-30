@@ -48,10 +48,8 @@ namespace TrelloTestFramework.TrelloTestFramework.Steps
 
         [Then("I should be logged in")]
         public void ThenIShouldBeLoggedIn()
-        {
-
-            
-            Assert.True(_loginPage.IsLoggedIn(_testHooks.Driver));
+        {  
+            Assert.That(_loginPage.IsLoggedIn(_testHooks.Driver));
         }
     
     } // end

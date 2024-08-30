@@ -31,12 +31,18 @@ namespace TrelloTestFramework.TrelloTestFramework.Hooks
         public static void BeforeScenario()
         {
             Console.WriteLine("BeforeScenario");
+            
+            // Get the feature and scenario titles
+            var featureTitle = ScenarioContext.Current.ScenarioInfo.Title;
+            var scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
+
+            // Start a new Allure test case            
         }
 
         [AfterScenario]
         public static void AfterScenario()
         {
-            Console.WriteLine("AfterScenario");
+            Console.WriteLine("AfterScenario");            // Finalize the Allure report
         }
 
 

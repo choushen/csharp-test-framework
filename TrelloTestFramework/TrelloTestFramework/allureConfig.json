@@ -1,0 +1,28 @@
+{
+    "allure": {
+        "directory": "../../../../../allure-results"
+        },
+        "specflow": {
+        "grouping": {
+            "suites": {
+            "parentSuite": "^allure\\.parentSuite:(.+)$",
+            "suite": "^allure\\.suite:(.+)$",
+            "subSuite": "^allure\\.subSuite:(.+)$"
+            },
+            "behaviors": {
+            "epic": "^allure\\.epic:(.+)$",
+            "story": "^allure\\.story:(.+)$"
+            }
+        },
+        "labels": {
+            "label": "^allure\\.label\\.([^:]+):(.+)$",
+            "owner": "^allure\\.owner:(.+)$",
+            "severity": "^(normal|blocker|critical|minor|trivial)$"
+        },
+        "links": {
+            "link": "^allure\\.link:(.+)$",
+            "issue": "^allure\\.issue:(.+)$",
+            "tms": "^allure\\.tms:(.+)$"
+        }
+    }
+}
