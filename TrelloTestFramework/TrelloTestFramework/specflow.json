@@ -1,7 +1,7 @@
 {
     "specFlow": {
         "runtime": {
-            "testThreadCount": 4,
+            "testThreadCount": 3,
             "executionOrder": "random" 
             }
         },
