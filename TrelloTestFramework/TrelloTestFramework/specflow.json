@@ -1,7 +1,13 @@
 {
+    "specFlow": {
+        "runtime": {
+            "testThreadCount": 2,
+            "executionOrder": "random" 
+            }
+        },
     "stepAssemblies": [
-    {
-        "assembly": "Allure.SpecFlowPlugin"
-    }
+        {
+            "assembly": "Allure.SpecFlowPlugin"
+        }
     ]
 }

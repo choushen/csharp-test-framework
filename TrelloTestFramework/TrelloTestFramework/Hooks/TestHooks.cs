@@ -8,59 +8,43 @@ using TrelloTestFramework.TrelloTestFramework.Driver;
 namespace TrelloTestFramework.TrelloTestFramework.Hooks
 {
 
-    [Binding]
-    public class TestHooks
+[Binding]
+public class TestHooks
+{
+    private static readonly DriverFactory _driverFactory = new DriverFactory();
+    private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
+
+    public IWebDriver Driver
     {
-
-        private static readonly DriverFactory _driverFactory = new DriverFactory();
-        private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
-
-        public IWebDriver Driver
-        {
-            get { return _driver.Value; }
-        }
-
-        [BeforeTestRun]
-        public static void BeforeTestRun()
-        {
-            // Initialize WebDriver, etc...
-            _driver.Value = _driverFactory.InitDriver();
-        }
-        
-        [BeforeScenario]
-        public static void BeforeScenario()
-        {
-            Console.WriteLine("BeforeScenario");
-            
-            // Get the feature and scenario titles
-            var featureTitle = ScenarioContext.Current.ScenarioInfo.Title;
-            var scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
-
-            // Start a new Allure test case            
-        }
-
-        [AfterScenario]
-        public static void AfterScenario()
-        {
-            Console.WriteLine("AfterScenario");            // Finalize the Allure report
-        }
-
-
-        [AfterTestRun]
-        public static void AfterTestRun()
-        {
-            // Close WebDriver, close browser, etc...
-            if(_driver.Value != null)
-            {
-                _driverFactory.Dispose(_driver.Value);
-                _driver.Value = null;
-                _driver.Dispose();
-            }
-
-            
-        }
-
+        get { return _driver.Value; }
     }
+
+    [BeforeScenario]
+    public void BeforeScenario()
+    {
+        Console.WriteLine("BeforeScenario");
+        IWebDriver webDriver = _driverFactory.InitDriver();
+        _driver.Value = webDriver;
+    }
+
+    [AfterScenario]
+    public void AfterScenario()
+    {
+        if (_driver.Value != null)
+        {
+            _driverFactory.Dispose(_driver.Value);
+            _driver.Value = null;
+        }
+    }
+
+    [AfterTestRun]
+    public static void AfterTestRun()
+    {
+        Console.WriteLine("AfterTestRun");
+        _driver.Dispose();
+    }
+}
+
 
 
 }

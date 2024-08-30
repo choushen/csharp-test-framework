@@ -7,50 +7,46 @@ using TrelloTestFramework.TrelloTestFramework.Pages;
 
 namespace TrelloTestFramework.TrelloTestFramework.Steps
 {
-
     [Binding]
     public class LoginSteps
     {
-
-        private readonly LoginPage _loginPage = LoginPage.GetInstance();
         private readonly TestHooks _testHooks;
-
 
         public LoginSteps(TestHooks testHooks)
         {
             _testHooks = testHooks;
         }
 
-        
         [Given(@"I navigate to the Trello login page")]
         public void NavigatedToTrelloLoginPage()
         {
-            _loginPage.NavigateToLoginPage(_testHooks.Driver);
-        } // end
-
+            // Retrieve the singleton instance and use the current thread's WebDriver
+            LoginPage.GetInstance().NavigateToLoginPage(_testHooks.Driver);
+        }
 
         [When("I enter the username and password")]
         public void WhenIEnterTheUsernameAndPassword()
         {
-            
-            _loginPage.EnterUsername(_testHooks.Driver, "ruliotrio@gmail.com");
-            _loginPage.ClickLoginSubmitButton(_testHooks.Driver);
-            _loginPage.EnterPassword(_testHooks.Driver, "139Test391!");
+            // Retrieve the singleton instance and use the current thread's WebDriver
+            var loginPage = LoginPage.GetInstance();
+            loginPage.EnterUsername(_testHooks.Driver, "ruliotrio@gmail.com");
+            loginPage.ClickLoginSubmitButton(_testHooks.Driver);
+            loginPage.EnterPassword(_testHooks.Driver, "139Test391!");
         }
-
 
         [When("I click the login button")]
         public void WhenIClickTheLoginButton()
         {
-            _loginPage.ClickLoginSubmitButton(_testHooks.Driver);
+            // Retrieve the singleton instance and use the current thread's WebDriver
+            LoginPage.GetInstance().ClickLoginSubmitButton(_testHooks.Driver);
         }
-
 
         [Then("I should be logged in")]
         public void ThenIShouldBeLoggedIn()
-        {  
-            Assert.That(_loginPage.IsLoggedIn(_testHooks.Driver));
+        {
+            // Retrieve the singleton instance and use the current thread's WebDriver
+            bool isLoggedIn = LoginPage.GetInstance().IsLoggedIn(_testHooks.Driver);
+            Assert.That(isLoggedIn, Is.True);
         }
-    
-    } // end
-} // end
+    }
+}
