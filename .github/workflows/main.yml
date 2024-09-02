@@ -2,8 +2,6 @@ name: selenium-windows-tests
 
 on:
   workflow_dispatch:  # Allows manual triggering of the workflow
-  schedule:
-    - cron: '0 3 * * 1'  # Runs the workflow every Monday at 3:00 AM UTC
 
 jobs:
   build-and-test:
