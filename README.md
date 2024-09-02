@@ -22,19 +22,18 @@ To fully set up and run this test suite with Allure reporting, GitHub integratio
 ### 1. **Enable Parallel Test Execution**
    - [X] Implement a thread-safe Bill Pugh Singleton Driver Factory for managing WebDriver instances.
    - [X] Configure NUnit to run tests in parallel for faster feedback.
-   - [] Implement parallel test execution in the Azure pipeline for faster feedback.
+   - [ ] Implement parallel test execution in the Azure pipeline for faster feedback.
 
 ### 2. **Allure Reporting Integration**
    - [X] Add Allure NuGet packages to the project.
    - [X] Configure NUnit to generate Allure-compatible XML reports.
-   - [ ] Set up the Allure command-line tool for report generation.
+   - [X] Set up the Allure command-line tool for report generation.
    - [ ] Modify the CI/CD pipeline to generate and publish Allure reports after each test run.
 
 ### 3. **GitHub Integration**
-   - [ ] Set up a GitHub repository and push the project to the repository.
-   - [ ] Create a `.gitignore` file to exclude unnecessary files from version control.
-   - [ ] Set up branch protection rules and PR templates for better collaboration.
-   - [ ] Implement GitHub Actions for CI/CD or integrate with Azure Pipelines.
+   - [X] Set up a GitHub repository and push the project to the repository.
+   - [X] Create a `.gitignore` file to exclude unnecessary files from version control.
+   - [X] Implement GitHub Actions for CI/CD or integrate with Azure Pipelines.
 
 ### 4. **Azure Cloud Setup**
    - [ ] Create an Azure DevOps project or use GitHub Actions with Azure integration.
